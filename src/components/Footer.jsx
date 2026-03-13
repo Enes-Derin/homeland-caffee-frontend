@@ -32,9 +32,9 @@ export default function Footer() {
           <div className="footer-nav">
             <div className="footer-col">
               <div className="footer-col-title">Sayfalar</div>
-              {["home","about","menu","gallery","contact"].map(id => (
+              {["home", "about", "menu", "gallery", "contact"].map(id => (
                 <button key={id} className="footer-link" onClick={() => scrollTo(id)}>
-                  {{home:"Ana Sayfa", about:"Hakkımızda", menu:"Menü", gallery:"Galeri", contact:"İletişim"}[id]}
+                  {{ home: "Ana Sayfa", about: "Hakkımızda", menu: "Menü", gallery: "Galeri", contact: "İletişim" }[id]}
                 </button>
               ))}
             </div>
@@ -49,8 +49,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2024 Homeland Coffee · Tüm hakları saklıdır.</span>
-          <span>Bağcılar, İstanbul</span>
+          <span>© 2026 Homeland Coffee · Tüm hakları saklıdır.</span>
+          <span>Developed By Algorixa</span>
         </div>
       </div>
     </footer>
