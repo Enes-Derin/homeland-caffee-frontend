@@ -10,7 +10,7 @@ import Cursor from "./components/Cursor";
 import "./styles/global.css";
 
 export default function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
