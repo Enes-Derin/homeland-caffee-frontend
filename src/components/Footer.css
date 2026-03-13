@@ -1,0 +1,113 @@
+.footer {
+  background: var(--bg-3);
+  border-top: 1px solid var(--border);
+  padding-bottom: 0;
+}
+
+.footer-top {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  padding: 72px 0 56px;
+}
+
+/* Brand */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.footer-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--text);
+}
+
+.footer-logo-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.9;
+  max-width: 280px;
+}
+
+/* Nav */
+.footer-nav {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.footer-link {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: none;
+  text-align: left;
+  padding: 0;
+  transition: color 0.25s;
+  letter-spacing: 0.2px;
+}
+
+.footer-link:hover { color: var(--text); }
+
+a.footer-link { cursor: none; }
+
+/* Bottom */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .footer-main { grid-template-columns: 1fr; gap: 48px; }
+  .footer-nav  { gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}

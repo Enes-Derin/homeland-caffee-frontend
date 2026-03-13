@@ -1,0 +1,471 @@
+/* ─── Section ───────────────────────────────────────────── */
+.menu-section {
+  position: relative;
+  padding: 140px 0 100px;
+  background: var(--bg-2);
+}
+
+.menu-bg-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: var(--border);
+  transform: translateX(-50%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.menu-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.menu-header.in {
+  animation: fadeUp 0.8s 0.1s ease forwards;
+  opacity: 0;
+}
+
+.menu-title {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.menu-title em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.menu-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* ─── Tab Bar ────────────────────────────────────────────── */
+.tab-bar-outer {
+  position: sticky;
+  top: 79px;
+  /* below navbar */
+  z-index: 100;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.tab-bar-outer.in {
+  animation: fadeIn 0.6s 0.2s ease forwards;
+  opacity: 0;
+}
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 12px 40px;
+  position: relative;
+  scrollbar-width: none;
+}
+
+.tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  padding: 9px 20px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: none;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+  flex-shrink: 0;
+}
+
+.tab-pill:hover {
+  color: var(--text-soft);
+  border-color: var(--border);
+}
+
+.tab-pill.active {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  background: var(--gold-subtle);
+}
+
+.tab-icon {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.tab-pill.active .tab-icon {
+  opacity: 1;
+}
+
+/* Sliding underline indicator (hidden on pill style) */
+.tab-indic {
+  display: none;
+}
+
+/* ─── Product Grid ───────────────────────────────────────── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+/* Entry animation when category changes */
+.product-grid .product-card {
+  animation: fadeUp 0.4s ease both;
+}
+
+.product-grid .product-card:nth-child(1) {
+  animation-delay: 0.03s;
+}
+
+.product-grid .product-card:nth-child(2) {
+  animation-delay: 0.07s;
+}
+
+.product-grid .product-card:nth-child(3) {
+  animation-delay: 0.11s;
+}
+
+.product-grid .product-card:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.product-grid .product-card:nth-child(5) {
+  animation-delay: 0.19s;
+}
+
+.product-grid .product-card:nth-child(6) {
+  animation-delay: 0.23s;
+}
+
+.product-grid .product-card:nth-child(7) {
+  animation-delay: 0.27s;
+}
+
+.product-grid .product-card:nth-child(8) {
+  animation-delay: 0.31s;
+}
+
+/* ─── Product Card ───────────────────────────────────────── */
+.product-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: none;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Image */
+.pc-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-3);
+}
+
+.pc-img-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      var(--bg-3) 25%,
+      var(--card-bg) 50%,
+      var(--bg-3) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.pc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+.pc-img.loaded {
+  opacity: 1;
+}
+
+.product-card:hover .pc-img {
+  transform: scale(1.05);
+}
+
+/* Tag badge */
+.pc-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.44rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 4px 10px;
+  pointer-events: none;
+}
+
+/* Info row */
+.pc-info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  flex: 1;
+}
+
+.pc-name {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.pc-price {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Bottom Sheet Modal ─────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-sheet {
+  width: 100%;
+  max-width: 520px;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border-mid);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-drag-handle {
+  width: 36px;
+  height: 3px;
+  background: var(--border-mid);
+  border-radius: 4px;
+  margin: 14px auto 0;
+}
+
+.modal-img-wrap {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-2) 0%, transparent 50%);
+}
+
+.modal-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.44rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 5px 12px;
+}
+
+.modal-body {
+  padding: 16px 28px 32px;
+}
+
+.modal-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.modal-name {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.modal-price {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.modal-desc {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.modal-close-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--gold);
+  border: none;
+  color: var(--bg);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: opacity 0.2s;
+}
+
+.modal-close-btn:hover {
+  opacity: 0.88;
+}
+
+/* ─── Note ───────────────────────────────────────────────── */
+.menu-note {
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tab-bar {
+    padding: 10px 20px;
+  }
+
+  .modal-sheet {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  .modal-body {
+    padding: 12px 20px 28px;
+  }
+
+  .modal-name {
+    font-size: 1.5rem;
+  }
+
+  .modal-price {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobile — tam ekran 2'li grid, thumb-friendly */
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .pc-info {
+    padding: 10px 12px;
+  }
+
+  .pc-name {
+    font-size: 0.88rem;
+  }
+
+  .pc-price {
+    font-size: 0.95rem;
+  }
+
+  .tab-pill {
+    padding: 8px 14px;
+    font-size: 0.64rem;
+  }
+}

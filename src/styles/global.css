@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap');
+
+/* ─── THEME VARIABLES ─────────────────────────────────── */
+
+/* 
+  DARK: Gece mavisi zemin + bronz/bakır aksan
+  Referans: Moodazine, Copper & Ink London tarzı premium cafe siteleri
+  Palette: #0d1117 (gece) · #1a2332 (yüzey) · #b87333 (bakır) · #e8d5b7 (krem)
+*/
+:root[data-theme="dark"] {
+  --bg: #0b0f14;
+  --bg-2: #111720;
+  --bg-3: #182130;
+  --text: #e8d5b7;
+  --text-muted: rgba(232, 213, 183, 0.32);
+  --text-soft: rgba(232, 213, 183, 0.58);
+
+  /* Bakır/bronz aksan — 2025 "warm metallic" trendi */
+  --gold: #b87333;
+  --gold-dim: rgba(184, 115, 51, 0.2);
+  --gold-subtle: rgba(184, 115, 51, 0.07);
+  --border: rgba(184, 115, 51, 0.13);
+  --border-mid: rgba(184, 115, 51, 0.25);
+
+  /* Zeytin yeşili ikincil aksan */
+  --accent2: #5c7a4e;
+  --accent2-dim: rgba(92, 122, 78, 0.15);
+
+  --glass: rgba(17, 23, 32, 0.78);
+  --shadow: 0 32px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(184, 115, 51, 0.06);
+  --nav-bg: rgba(11, 15, 20, 0.92);
+  --card-bg: rgba(24, 33, 48, 0.55);
+}
+
+/*
+  LIGHT: Linen/krem zemin + terracotta aksan + zeytin detayı
+  Referans: Onyx Coffee Lab, Blue Bottle Coffee, Ozone Coffee tarzı
+  Palette: #f5f0e8 (linen) · #ebe3d5 (warm white) · #c0622a (terracotta) · #3a4a2e (koyu yeşil)
+*/
+:root[data-theme="light"] {
+  --bg: #f5f0e8;
+  --bg-2: #ece4d4;
+  --bg-3: #e0d4c0;
+  --text: #1c1a16;
+  --text-muted: rgba(28, 26, 22, 0.38);
+  --text-soft: rgba(28, 26, 22, 0.62);
+
+  /* Terracotta aksan — 2025'in en popüler cafe rengi */
+  --gold: #b85c2a;
+  --gold-dim: rgba(184, 92, 42, 0.16);
+  --gold-subtle: rgba(184, 92, 42, 0.07);
+  --border: rgba(184, 92, 42, 0.15);
+  --border-mid: rgba(184, 92, 42, 0.28);
+
+  /* Zeytin yeşili ikincil aksan */
+  --accent2: #4a6b3a;
+  --accent2-dim: rgba(74, 107, 58, 0.12);
+
+  --glass: rgba(245, 240, 232, 0.88);
+  --shadow: 0 20px 60px rgba(28, 26, 22, 0.1), 0 0 0 1px rgba(184, 92, 42, 0.08);
+  --nav-bg: rgba(245, 240, 232, 0.94);
+  --card-bg: rgba(224, 212, 192, 0.45);
+}
+
+/* ─── RESET & BASE ─────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  cursor: none;
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+::selection {
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+/* ─── SCROLLBAR ────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-mid);
+  border-radius: 10px;
+}
+
+/* ─── TYPOGRAPHY ───────────────────────────────────────── */
+.display {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.05;
+}
+
+.mono-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ─── DIVIDERS ─────────────────────────────────────────── */
+.rule {
+  width: 48px;
+  height: 1px;
+  background: var(--border-mid);
+  display: inline-block;
+}
+
+/* ─── SECTION LABEL ────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* ─── KEYFRAMES ────────────────────────────────────────── */
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes rotateSlowZ {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+@keyframes scrollAnim {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* ─── UTILITY ──────────────────────────────────────────── */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
